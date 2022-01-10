@@ -22,10 +22,10 @@ function App() {
         <Route path="/accounts/login/" element={<Login />} />
         <Route path="/accounts/profile" element={<Profile />} />
 
-        <Route path="/blog/" element={<PageBlogList />} />
-        <Route path="/blog/new/" element={<PageBlogForm />} />
-        <Route path="/blog/:postId/" element={<PageBlogDetail />} />
-        <Route path="/blog/:postId/edit" element={<PageBlogForm />} />
+        <Route path="/blog/post/" element={<PageBlogList />} />
+        <Route path="/blog/post/new/" element={<PageBlogForm />} />
+        <Route path="/blog/post/:postId/" element={<PageBlogDetail />} />
+        <Route path="/blog/post/:postId/edit" element={<PageBlogForm />} />
 
         <Route path="/examples/components/" element={<Components />} />
 
