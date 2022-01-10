@@ -14,6 +14,10 @@ function TopNav() {
           <MyLink to="/reviews/">Review</MyLink>
         </li>
         <li>
+          <MyLink to="/blog/">Blog</MyLink>
+        </li>
+
+        <li>
           <MyLink to="/examples/components/">eg of components</MyLink>
         </li>
       </ul>

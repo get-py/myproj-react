@@ -6,7 +6,9 @@ import Profile from 'pages/accounts/Profile';
 import TopNav from 'components/TopNav';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
-import PageBlog from 'pages/blog/PageBlogList';
+import PageBlogList from 'pages/blog/PageBlogList';
+import PageBlogDetail from 'pages/blog/PageBlogDetail';
+import PageBlogForm from 'pages/blog/PageBlogForm';
 
 function App() {
   return (
@@ -19,11 +21,17 @@ function App() {
         <Route path="/" element={<Navigate to="/reviews/" />} />
         <Route path="/accounts/login/" element={<Login />} />
         <Route path="/accounts/profile" element={<Profile />} />
-        <Route path="/reviews" element={<ReviewList />} />
+
+        <Route path="/blog/" element={<PageBlogList />} />
+        <Route path="/blog/new/" element={<PageBlogForm />} />
+        <Route path="/blog/:postId/" element={<PageBlogDetail />} />
+        <Route path="/blog/:postId/edit" element={<PageBlogForm />} />
+
         <Route path="/examples/components/" element={<Components />} />
+
+        <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/new/" element={<ReviewForm />} />
         <Route path="/reviews/:reviewId/edit" element={<ReviewForm />} />
-        <Route path="/blog/" element={<PageBlog />} />
       </Routes>
     </div>
   );
