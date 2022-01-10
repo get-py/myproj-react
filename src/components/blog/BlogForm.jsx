@@ -10,29 +10,36 @@ function BlogForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
   return (
     <div>
       {loading && 'Loading...'}
-      <label>Title</label>
-      <text
-        onChange={handleFieldChange}
-        name="title"
-        value={fieldValues.title}
-        className="bg-gray-200"
-      />
 
-      <label>Content</label>
-      <textarea
-        onChange={handleFieldChange}
-        name="content"
-        value={fieldValues.content}
-        className="border-gray-300"
-      />
+      <div>
+        <label>Title</label>
+        <textarea
+          onChange={handleFieldChange}
+          name="title"
+          value={fieldValues.title}
+          className="bg-gray-200"
+        />
+      </div>
 
-      <button
-        type="submit"
-        onClick={() => handleClickedSubmitButton()}
-        disabled={loading}
-      >
-        {loading && 'loading...'} 저장하기
-      </button>
+      <div>
+        <label>Content</label>
+        <textarea
+          onChange={handleFieldChange}
+          name="content"
+          value={fieldValues.content}
+          className="border-gray-300"
+        />
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          onClick={() => handleClickedSubmitButton()}
+          disabled={loading}
+        >
+          {loading && 'loading...'} 저장하기
+        </button>
+      </div>
     </div>
   );
 }
