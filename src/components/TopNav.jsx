@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function TopNav() {
   return (
-    <div className="my-3">
+    <div className="my-3 ">
       <ul className="flex gap-4">
         <li>
           <MyLink to="/accounts/profile">Profile</MyLink>
@@ -12,6 +12,9 @@ function TopNav() {
         </li>
         <li>
           <MyLink to="/reviews/">Review</MyLink>
+        </li>
+        <li>
+          <MyLink to="/examples/components/">eg of components</MyLink>
         </li>
       </ul>
     </div>
