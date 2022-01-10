@@ -6,7 +6,7 @@ import Profile from 'pages/accounts/Profile';
 import TopNav from 'components/TopNav';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
-import PageBlog from 'pages/blog/PageBlog';
+import PageBlog from 'pages/blog/PageBlogList';
 
 function App() {
   return (
