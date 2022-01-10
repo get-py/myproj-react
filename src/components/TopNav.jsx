@@ -14,7 +14,7 @@ function TopNav() {
           <MyLink to="/reviews/">Review</MyLink>
         </li>
         <li>
-          <MyLink to="/blog/">Blog</MyLink>
+          <MyLink to="/blog/posts/">Blog</MyLink>
         </li>
 
         <li>

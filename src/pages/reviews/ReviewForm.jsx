@@ -3,8 +3,7 @@ import ReviewForm from 'components/ReviewForm';
 import useFieldValues from 'hooks/useFieldValues';
 import { Navigate, useParams } from 'react-router-dom';
 import Axios from 'axios';
-import { useState } from 'react/cjs/react.development';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function PageReviewForm() {
   const [loading, setLoading] = useState(false);
