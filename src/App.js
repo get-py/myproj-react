@@ -10,6 +10,8 @@ import PageBlogList from 'pages/blog/PageBlogList';
 import PageBlogDetail from 'pages/blog/PageBlogDetail';
 import PageBlogForm from 'pages/blog/PageBlogForm';
 import Clock from 'pages/examples/Clock';
+import CssModule from 'pages/examples/CssModule';
+import CssInJs from 'pages/examples/CssInJs';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/blog/posts/:postId/edit/" element={<PageBlogForm />} />
 
           <Route path="/examples/components/" element={<Components />} />
+          <Route path="/examples/css-module/" element={<CssModule />} />
+          <Route path="/examples/cssinjs/" element={<CssInJs />} />
 
           <Route path="/reviews/" element={<ReviewList />} />
           <Route path="/reviews/new/" element={<ReviewForm />} />
