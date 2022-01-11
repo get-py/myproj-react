@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 function BlogForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
   const handleClickedSubmitButton = () => {
     if (handleSubmit) {
@@ -6,6 +8,7 @@ function BlogForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
       console.warn('handleSubmit 속성값을 지정해주세요.');
     }
   };
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -13,21 +16,24 @@ function BlogForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
 
       <div>
         <label>Title</label>
+      </div>
+      <div>
         <textarea
           onChange={handleFieldChange}
           name="title"
           value={fieldValues.title}
-          className="bg-gray-200"
+          className="bg-gray-100 border-gray-300"
         />
       </div>
-
       <div>
         <label>Content</label>
+      </div>
+      <div>
         <textarea
           onChange={handleFieldChange}
           name="content"
           value={fieldValues.content}
-          className="border-gray-300"
+          className="bg-gray-100 border-gray-300"
         />
       </div>
 
@@ -35,6 +41,7 @@ function BlogForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
         <button
           type="submit"
           onClick={() => handleClickedSubmitButton()}
+          onClick={() => navigate(`/blog/posts/`)}
           disabled={loading}
         >
           {loading && 'loading...'} 저장하기

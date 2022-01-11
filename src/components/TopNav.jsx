@@ -23,7 +23,7 @@ function TopNav() {
         <li>
           <MyLink to="/examples/clock/">clock</MyLink>
         </li>
-        <li>
+        {/* <li>
           <MyLink to="/examples/css-module/">CssModule</MyLink>
         </li>
         <li>
@@ -34,7 +34,7 @@ function TopNav() {
         </li>
         <li>
           <MyLink to="/examples/context-api-sample2/">ContextApiSample2</MyLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

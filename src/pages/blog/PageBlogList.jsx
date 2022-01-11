@@ -72,7 +72,7 @@ function PageBlogList() {
       </button>
 
       <button
-        onClick={() => navigate('/posts/new')}
+        onClick={() => navigate('/blog/posts/new')}
         className="text-sm hover:bg-purple-200"
       >
         write
@@ -83,7 +83,7 @@ function PageBlogList() {
           key={post.id}
           post={post}
           handleDelete={() => deletePost(post)}
-          // handleEdit={() => navigate(`/posts/${post.id}/edit`)}
+          handleEdit={() => navigate(`/blog/posts/${post.id}/edit/`)}
         />
       ))}
     </div>

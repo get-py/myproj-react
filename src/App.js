@@ -33,6 +33,7 @@ function App() {
           <Route path="/blog/posts/:postId/" element={<PageBlogDetail />} />
           <Route path="/blog/posts/:postId/edit/" element={<PageBlogForm />} />
 
+          <Route path="/examples/clock/" element={<Clock />} />
           <Route path="/examples/components/" element={<Components />} />
           <Route path="/examples/css-module/" element={<CssModule />} />
           <Route path="/examples/cssinjs/" element={<CssInJs />} />
@@ -50,9 +51,6 @@ function App() {
           <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
         </Routes>
       </div>
-      <Routes>
-        <Route path="/examples/clock/" element={<Clock />} />
-      </Routes>
     </>
   );
 }

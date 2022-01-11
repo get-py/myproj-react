@@ -44,7 +44,7 @@ function PageBlogForm() {
       } else {
         await axiosInstance.post(url, fieldValues);
       }
-      Navigate('/posts/');
+      Navigate('posts/');
     } catch (e) {
       setError(e);
       console.error(e);
@@ -54,7 +54,7 @@ function PageBlogForm() {
 
   return (
     <div>
-      <h1>Review Form {postId ? '수정' : '생성'}</h1>
+      <h1 className="text-bold">Review Form {postId ? '수정' : '생성'}</h1>
       <BlogForm
         fieldValues={fieldValues}
         handleFieldChange={handleFieldChange}

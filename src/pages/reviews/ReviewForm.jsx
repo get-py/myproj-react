@@ -1,7 +1,7 @@
 import DebugStates from 'components/DebugStates';
 import ReviewForm from 'components/ReviewForm';
 import useFieldValues from 'hooks/useFieldValues';
-import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from 'api/base';
 
@@ -14,7 +14,7 @@ function PageReviewForm() {
       score: 5,
       content: '',
     });
-
+  const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function PageReviewForm() {
 
     const url = !reviewId
       ? '/shop/api/reviews/'
-      : `/shop/api/reviews/${reviewId}`;
+      : `/shop/api/reviews/${reviewId}/`;
 
     try {
       if (!reviewId) {
@@ -50,7 +50,7 @@ function PageReviewForm() {
       } else {
         await axiosInstance.post(url, fieldValues);
       }
-      Navigate('/reviews/');
+      navigate('/reviews/');
     } catch (e) {
       setError(e);
       console.error(e);
