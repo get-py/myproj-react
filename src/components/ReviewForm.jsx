@@ -1,6 +1,12 @@
 import { useState } from 'react/cjs/react.development';
 
-function ReviewForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
+function ReviewForm({
+  fieldValues,
+  errorMessages,
+  handleFieldChange,
+  handleSubmit,
+  loading,
+}) {
   const handleClickedSubmitButton = () => {
     if (handleSubmit) {
       handleSubmit();
@@ -12,7 +18,7 @@ function ReviewForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
   return (
     <div>
       {loading && 'Loading...'}
-      <label className="">SCORE</label>
+      <label className=""></label>
       <select
         onChange={handleFieldChange}
         name="score"
@@ -26,15 +32,20 @@ function ReviewForm({ fieldValues, handleFieldChange, handleSubmit, loading }) {
         <option>4</option>
         <option>5</option>
       </select>
+      <div className="text-red-400">{errorMessages.score}</div>
 
       <div>
         <label className="">CONTENT</label>
-        <textarea
-          onChange={handleFieldChange}
-          name="content"
-          value={fieldValues.content}
-          className="border-gray-300"
-        />
+        <div>
+          <textarea
+            onChange={handleFieldChange}
+            name="content"
+            value={fieldValues.content}
+            className="bg-purple-100 border-purple-400"
+          />
+        </div>
+
+        <div className="text-red-400">{errorMessages.content}</div>
       </div>
       <div>
         <button
