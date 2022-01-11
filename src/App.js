@@ -12,6 +12,8 @@ import PageBlogForm from 'pages/blog/PageBlogForm';
 import Clock from 'pages/examples/Clock';
 import CssModule from 'pages/examples/CssModule';
 import CssInJs from 'pages/examples/CssInJs';
+import ContextApiSample from 'pages/examples/ContextApiSample';
+import ContextApiSample2 from 'pages/examples/ContextApiSample2';
 
 function App() {
   return (
@@ -34,6 +36,14 @@ function App() {
           <Route path="/examples/components/" element={<Components />} />
           <Route path="/examples/css-module/" element={<CssModule />} />
           <Route path="/examples/cssinjs/" element={<CssInJs />} />
+          <Route
+            path="/examples/contextapisample/"
+            element={<ContextApiSample />}
+          />
+          <Route
+            path="/examples/context-api-sample2/"
+            element={<ContextApiSample2 />}
+          />
 
           <Route path="/reviews/" element={<ReviewList />} />
           <Route path="/reviews/new/" element={<ReviewForm />} />
