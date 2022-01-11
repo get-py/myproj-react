@@ -5,10 +5,10 @@ function TopNav() {
     <div className="my-3 ">
       <ul className="flex gap-4">
         <li>
-          <MyLink to="/accounts/profile">Profile</MyLink>
+          <MyLink to="/accounts/profile/">Profile</MyLink>
         </li>
         <li>
-          <MyLink to="/accounts/login">Login</MyLink>
+          <MyLink to="/accounts/login/">Login</MyLink>
         </li>
         <li>
           <MyLink to="/reviews/">Review</MyLink>
@@ -18,7 +18,10 @@ function TopNav() {
         </li>
 
         <li>
-          <MyLink to="/examples/components/">eg of components</MyLink>
+          <MyLink to="/examples/components/">components</MyLink>
+        </li>
+        <li>
+          <MyLink to="/examples/clock/">clock</MyLink>
         </li>
       </ul>
     </div>

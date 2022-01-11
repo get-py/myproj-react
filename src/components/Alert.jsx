@@ -17,7 +17,7 @@ function Alert({ type, message }) {
 
   return (
     <div
-      class={`bg-${colorCode}-100 rounded-lg py-5 px-6 mb-3 text-base text-${colorCode}-700 inline-flex items-center w-full`}
+      className={`bg-${colorCode}-100 rounded-lg py-5 px-6 mb-3 text-base text-${colorCode}-700 inline-flex items-center w-full`}
       role="alert"
     >
       <span className="mr-2">{icon}</span>

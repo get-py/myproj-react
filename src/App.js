@@ -9,31 +9,37 @@ import ReviewForm from 'pages/reviews/ReviewForm';
 import PageBlogList from 'pages/blog/PageBlogList';
 import PageBlogDetail from 'pages/blog/PageBlogDetail';
 import PageBlogForm from 'pages/blog/PageBlogForm';
+import Clock from 'pages/examples/Clock';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-purple-800 text-xl text-center text-bold py-2">
-        ▼ Welcome to Yerin's React Router ▼
-      </h1>
-      <TopNav />
+    <>
+      <div className="App">
+        <h1 className="text-purple-800 text-xl text-center text-bold py-2">
+          ▼ Welcome to Yerin's React Router ▼
+        </h1>
+        <TopNav />
+        <Routes>
+          <Route path="/" element={<Navigate to="/reviews/" />} />
+          <Route path="/accounts/login/" element={<Login />} />
+          <Route path="/accounts/profile/" element={<Profile />} />
+
+          <Route path="/blog/posts/" element={<PageBlogList />} />
+          <Route path="/blog/posts/new/" element={<PageBlogForm />} />
+          <Route path="/blog/posts/:postId/" element={<PageBlogDetail />} />
+          <Route path="/blog/posts/:postId/edit/" element={<PageBlogForm />} />
+
+          <Route path="/examples/components/" element={<Components />} />
+
+          <Route path="/reviews/" element={<ReviewList />} />
+          <Route path="/reviews/new/" element={<ReviewForm />} />
+          <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
+        </Routes>
+      </div>
       <Routes>
-        <Route path="/" element={<Navigate to="/reviews/" />} />
-        <Route path="/accounts/login/" element={<Login />} />
-        <Route path="/accounts/profile" element={<Profile />} />
-
-        <Route path="/blog/posts/" element={<PageBlogList />} />
-        <Route path="/blog/posts/new/" element={<PageBlogForm />} />
-        <Route path="/blog/posts/:postId/" element={<PageBlogDetail />} />
-        <Route path="/blog/posts/:postId/edit" element={<PageBlogForm />} />
-
-        <Route path="/examples/components/" element={<Components />} />
-
-        <Route path="/reviews" element={<ReviewList />} />
-        <Route path="/reviews/new/" element={<ReviewForm />} />
-        <Route path="/reviews/:reviewId/edit" element={<ReviewForm />} />
+        <Route path="/examples/clock/" element={<Clock />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
