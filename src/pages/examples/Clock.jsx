@@ -5,6 +5,8 @@ import './Clock.css';
 function Clock() {
   const [date, setDate] = useState(new Date());
 
+  const Weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setDate(new Date());
@@ -17,8 +19,13 @@ function Clock() {
   return (
     <div className="clock-wrapper">
       <div className="clock">
-        <p className="date">2021-10-05 TUE</p>
-        <p className="time">{date.toISOString().slice(11, 19)}</p>
+        <p className="date">
+          {date.getFullYear()}-{date.getMonth() + 1}-{date.getDate()}{' '}
+          {Weekdays[date.getDay()]}
+        </p>
+        <p className="time">
+          {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
+        </p>
         <p className="text">Powered by React.js</p>
       </div>
     </div>
