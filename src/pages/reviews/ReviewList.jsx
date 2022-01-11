@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import { axiosInstance } from 'api/base';
 import DebugStates from 'components/DebugStates';
 import Review from 'components/Review';
 import useFieldValues from 'hooks/useFieldValues';
@@ -28,9 +28,10 @@ function PageReviewList() {
     setLoading(true);
     setError(null);
 
-    const url = 'http://127.0.0.1:8000/shop/api/reviews/';
+    const url = '/shop/api/reviews/';
     // Promise 객체(400 미만이면 then, 400 이상이면 catch)
-    Axios.get(url)
+    axiosInstance
+      .get(url)
       .then(({ data }) => {
         setReviewList(data);
       })
@@ -45,12 +46,13 @@ function PageReviewList() {
 
   const deleteReview = (deletingReview) => {
     const { id: delReviewId } = deletingReview;
-    const url = `http://127.0.0.1:8000/shop/api/reviews/${delReviewId}/`;
+    const url = `/shop/api/reviews/${delReviewId}/`;
 
     setLoading(true);
     setError(null);
 
-    Axios.delete(url)
+    axiosInstance
+      .delete(url)
       .then(() => {
         console.log('삭제 성공');
         // 선택 1. 삭제된 항목만 상탯값에서 제거
