@@ -1,26 +1,25 @@
-import DebugStates from 'components/DebugStates';
-import ReviewForm from 'components/ReviewForm';
+import BlogForm from 'components/blog/BlogForm';
 import useFieldValues from 'hooks/useFieldValues';
+import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import Axios from 'axios';
-import { useEffect, useState } from 'react';
 
-function PageReviewForm() {
+function PageBlogForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { reviewId } = useParams();
+  const { postId } = useParams();
   const { fieldValues, handleFieldChange, setFieldValues, clearFieldValues } =
     useFieldValues({
-      score: 5,
+      title: '',
       content: '',
     });
 
   useEffect(() => {
-    const fetchReview = async () => {
+    const fetchPost = async () => {
       setLoading(true);
       setError(null);
 
-      const url = `http://localhost:8000/shop/api/reviews/${reviewId}/`;
+      const url = `http://localhost:8000/blog/api/posts/${postId}/`;
       try {
         const response = await Axios.get(url);
         setFieldValues(response.data);
@@ -29,25 +28,25 @@ function PageReviewForm() {
       }
       setLoading(false);
     };
-    if (reviewId) fetchReview();
+    if (postId) fetchPost();
     else clearFieldValues();
-  }, [reviewId]);
+  }, [postId]);
 
-  const saveReview = async () => {
+  const savePost = async () => {
     setLoading(true);
     setError(null);
 
-    const url = !reviewId
-      ? 'http://localhost:8000/shop/api/reviews/'
-      : `http://localhost:8000/shop/api/reviews/${reviewId}`;
+    const url = !postId
+      ? 'http://localhost:8000/blog/api/posts/'
+      : `http://localhost:8000/blog/api/posts/${postId}/`;
 
     try {
-      if (!reviewId) {
+      if (!postId) {
         await Axios.post(url, fieldValues);
       } else {
         await Axios.post(url, fieldValues);
       }
-      Navigate('/reviews/');
+      Navigate('/posts/');
     } catch (e) {
       setError(e);
       console.error(e);
@@ -57,15 +56,15 @@ function PageReviewForm() {
 
   return (
     <div>
-      <h2>Review {reviewId ? '수정' : '생성'}</h2>
-
-      <ReviewForm
+      <h1>Review Form {postId ? '수정' : '생성'}</h1>
+      <BlogForm
         fieldValues={fieldValues}
         handleFieldChange={handleFieldChange}
-        handleSubmit={saveReview}
+        handleSubmit={savePost}
         loading={loading}
       />
     </div>
   );
 }
-export default PageReviewForm;
+
+export default PageBlogForm;
