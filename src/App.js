@@ -16,6 +16,7 @@ import ContextApiSample from 'pages/examples/ContextApiSample';
 import ContextApiSample2 from 'pages/examples/ContextApiSample2';
 import PageNewsIndex from 'pages/news/PageNewsIndex';
 import PageNewsArticleDetail from 'pages/news/PageNewsArticleDetail';
+import PageNewsArticleForm from 'pages/news/PageNewsArticleForm';
 
 function App() {
   return (
@@ -50,6 +51,11 @@ function App() {
 
           <Route path="/news/" element={<PageNewsIndex />} />
           <Route path="/news/:articleId" element={<PageNewsArticleDetail />} />
+          <Route path="/news/new" element={<PageNewsArticleForm />} />
+          <Route
+            path="/news/:articleId/edit"
+            element={<PageNewsArticleForm />}
+          />
 
           <Route path="/reviews/" element={<ReviewList />} />
           <Route path="/reviews/new/" element={<ReviewForm />} />

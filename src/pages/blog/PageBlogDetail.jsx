@@ -1,7 +1,14 @@
+import BlogDetail from 'components/blog/BlogDetail';
+import { useParams } from 'react-router-dom';
+
 function PageBlogDetail() {
+  const { postId } = useParams();
   return (
     <div>
-      <h1>Post</h1>
+      <BlogDetail postId={postId} />
+
+      <h2>추천글</h2>
+      <h2>AD</h2>
     </div>
   );
 }

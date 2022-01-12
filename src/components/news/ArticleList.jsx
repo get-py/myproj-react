@@ -1,19 +1,24 @@
-import useAxios from 'axios-hooks';
+import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
 import ArticleSummary from './ArticleSummary';
+import { useEffect } from 'react';
 
 function ArticleList() {
-  const [{ data: articleList, loading, error }, refetch] = useAxios(
-    'http://127.0.0.1:8000/news/api/articles/',
+  const [{ data: articleList, loading, error }, refetch] = useApiAxios(
+    '/news/api/articles/',
   );
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <div>
-      <h2>뉴스기사 목록을 보여줄 것입니다</h2>
       {loading && '로딩중'}
       {error && '로딩 중 에러가 발생했습니다'}
       {articleList &&
-        articleList.map((article) => <ArticleSummary article={article} />)}
+        articleList.map((article) => (
+          <ArticleSummary article={article} key={article.id} />
+        ))}
       <DebugStates articleList={articleList} loading={loading} error={error} />
     </div>
   );
