@@ -23,6 +23,10 @@ function TopNav() {
         <li>
           <MyLink to="/examples/clock/">clock</MyLink>
         </li>
+        <li>
+          <MyLink to="/news/">News</MyLink>
+        </li>
+
         {/* <li>
           <MyLink to="/examples/css-module/">CssModule</MyLink>
         </li>
