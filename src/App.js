@@ -17,13 +17,14 @@ import ContextApiSample2 from 'pages/examples/ContextApiSample2';
 import PageNewsIndex from 'pages/news/PageNewsIndex';
 import PageNewsArticleDetail from 'pages/news/PageNewsArticleDetail';
 import PageNewsArticleForm from 'pages/news/PageNewsArticleForm';
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
     <>
       <div className="App">
         <h1 className="text-purple-800 text-xl text-center text-bold py-2">
-          ▼ Welcome to Yerin's React Router ▼
+          <Link to="/">▼ Welcome to Yerin's React Router ▼</Link>
         </h1>
         <TopNav />
         <Routes>
