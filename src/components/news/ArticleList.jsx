@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 function ArticleList() {
   const [{ data: articleList, loading, error }, refetch] = useApiAxios(
     '/news/api/articles/',
+    { manual: true },
   );
   useEffect(() => {
     refetch();
