@@ -6,6 +6,7 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
 import { data } from 'autoprefixer';
 import { useEffect } from 'react';
+import produce from 'immer';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
@@ -36,12 +37,23 @@ function ArticleForm({ articleId, handleDidSave }) {
     article || INIT_FIELD_VALUES,
   );
 
-  useEffect(() => {
-    setFieldValues((prevFieldValues) => ({
-      ...prevFieldValues,
-      photo: '',
-    }));
-  }, [article]);
+  // useEffect(() => {
+  //   setFieldValues((prevFieldValues) => ({
+  //     ...prevFieldValues,
+  //     photo: '',
+  //   }));
+  // }, [article]);
+
+  useEffect(() =>
+    setFieldValues((prevFieldValues) => {
+      return produce(prevFieldValues, (draft) => (draft.photo = ''));
+    }),
+  );
+  // setFieldValues(
+  //   produce((draft) => {
+  //     draft.photo = '';
+  //   }),
+  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
