@@ -4,6 +4,8 @@ import H2 from 'components/H2';
 import LoadingIndicator from 'components/LoadingIndicator';
 import useFieldValues from 'hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
+import { data } from 'autoprefixer';
+import { useEffect } from 'react';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
@@ -30,15 +32,34 @@ function ArticleForm({ articleId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } = useFieldValues(
+  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     article || INIT_FIELD_VALUES,
   );
+
+  useEffect(() => {
+    setFieldValues((prevFieldValues) => ({
+      ...prevFieldValues,
+      photo: '',
+    }));
+  }, [article]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // fieldValues : 객체 (except 파일)
+    // 파일을 업로드할려면, FormData 인스턴스를 써야합니다.
+    const formData = new FormData();
+    Object.entries(fieldValues).forEach(([name, value]) => {
+      if (Array.isArray(value)) {
+        const fileList = value;
+        fileList.forEach((file) => formData.append(name, file));
+      } else {
+        formData.append(name, value);
+      }
+    });
+
     saveRequest({
-      data: fieldValues,
+      data: formData,
     }).then((response) => {
       const savedPost = response.data;
       if (handleDidSave) handleDidSave(savedPost);
@@ -79,6 +100,23 @@ function ArticleForm({ articleId, handleDidSave }) {
           />
           {saveErrorMassages.content &&
             saveErrorMassages.content.map((message, index) => (
+              <p key={index} className="text-xs text-red-400">
+                {message}
+              </p>
+            ))}
+        </div>
+
+        {/* 사진 */}
+        <div className="my-3">
+          <input
+            type="file"
+            accept=".png .jpg .jpeg"
+            name="photo"
+            // value 는 지정하지 않음, 내가 가지고 있지 않으니까!
+            onChange={handleFieldChange}
+          />
+          {saveErrorMassages.photo &&
+            saveErrorMassages.photo.map((message, index) => (
               <p key={index} className="text-xs text-red-400">
                 {message}
               </p>
