@@ -4,7 +4,6 @@ import H2 from 'components/H2';
 import LoadingIndicator from 'components/LoadingIndicator';
 import useFieldValues from 'hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
-import { data } from 'autoprefixer';
 import { useEffect } from 'react';
 import produce from 'immer';
 
@@ -33,27 +32,17 @@ function ArticleForm({ articleId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    article || INIT_FIELD_VALUES,
-  );
+  const { fieldValues, handleFieldChange, setFieldValues, formData } =
+    useFieldValues(article || INIT_FIELD_VALUES);
 
-  // useEffect(() => {
-  //   setFieldValues((prevFieldValues) => ({
-  //     ...prevFieldValues,
-  //     photo: '',
-  //   }));
-  // }, [article]);
-
+  // article 조회 시에 photo 속성을 빈 문자열로 변경
   useEffect(() =>
-    setFieldValues((prevFieldValues) => {
-      return produce(prevFieldValues, (draft) => (draft.photo = ''));
-    }),
+    setFieldValues(
+      produce((draft) => {
+        draft.photo = '';
+      }),
+    ),
   );
-  // setFieldValues(
-  //   produce((draft) => {
-  //     draft.photo = '';
-  //   }),
-  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();

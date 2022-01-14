@@ -10,9 +10,9 @@ function PageNewsIndex() {
   return (
     <div>
       <h1 className="text-xl text-blue-700 my-3">[ 뉴스 페이지 ]</h1>
-      <ArticleList />
 
-      <Button onClick={() => navigate('/news/new')}>새 포스팅 쓰기</Button>
+      <Button onClick={() => navigate('/news/new/')}>새 포스팅 쓰기</Button>
+      <ArticleList />
 
       <h2>뉴스 추천</h2>
 

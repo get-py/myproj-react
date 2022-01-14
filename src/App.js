@@ -18,6 +18,9 @@ import PageNewsIndex from 'pages/news/PageNewsIndex';
 import PageNewsArticleDetail from 'pages/news/PageNewsArticleDetail';
 import PageNewsArticleForm from 'pages/news/PageNewsArticleForm';
 import { Link } from 'react-router-dom';
+import PageHotPotatoIndex from 'pages/discussion/PageHotPotatoIndex';
+import PageHotPotatoDetail from 'pages/discussion/PageHotPotatoDetail';
+import PageHotPotatoForm from 'pages/discussion/PageHotPotatoForm';
 
 function App() {
   return (
@@ -50,11 +53,22 @@ function App() {
             element={<ContextApiSample2 />}
           />
 
-          <Route path="/news/" element={<PageNewsIndex />} />
-          <Route path="/news/:articleId" element={<PageNewsArticleDetail />} />
-          <Route path="/news/new" element={<PageNewsArticleForm />} />
+          <Route path="/hotpotatos/" element={<PageHotPotatoIndex />} />
           <Route
-            path="/news/:articleId/edit"
+            path="/hotpotatos/:hotpotatoId/"
+            element={<PageHotPotatoDetail />}
+          />
+          <Route path="/hotpotatos/new/" element={<PageHotPotatoForm />} />
+          <Route
+            path="/hotpotatos/:hotpotatoId/edit/"
+            element={<PageHotPotatoForm />}
+          />
+
+          <Route path="/news/" element={<PageNewsIndex />} />
+          <Route path="/news/:articleId/" element={<PageNewsArticleDetail />} />
+          <Route path="/news/new/" element={<PageNewsArticleForm />} />
+          <Route
+            path="/news/:articleId/edit/"
             element={<PageNewsArticleForm />}
           />
 
