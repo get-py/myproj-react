@@ -17,7 +17,9 @@ function HotPotatoList() {
     <div>
       {hotpotatoList &&
         hotpotatoList.map((hotpotato) => (
-          <HotPotatoSummary hotpotato={hotpotato} key={hotpotato.id} />
+          <div>
+            <HotPotatoSummary hotpotato={hotpotato} key={hotpotato.id} />
+          </div>
         ))}
       <DebugStates
         hotpotatoList={HotPotatoList}

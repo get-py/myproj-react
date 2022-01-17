@@ -7,7 +7,7 @@ function BlogDetail({ postId }) {
   const navigate = useNavigate();
 
   const [{ data: post, loading, error }, refetch] = useApiAxios(
-    `/blog/api/posts/${postId}`,
+    `/blog/api/posts/${postId}/`,
   );
 
   const [{ loading: deleteLoading, error: deleteError }, deletePost] =

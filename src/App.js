@@ -1,8 +1,8 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ReviewList from 'pages/reviews/ReviewList';
-import Login from 'pages/accounts/Login';
-import Profile from 'pages/accounts/Profile';
+import Login from 'pages/accounts/PageLogin';
+import Profile from 'pages/accounts/PageProfile';
 import TopNav from 'components/TopNav';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
@@ -21,6 +21,8 @@ import { Link } from 'react-router-dom';
 import PageHotPotatoIndex from 'pages/discussion/PageHotPotatoIndex';
 import PageHotPotatoDetail from 'pages/discussion/PageHotPotatoDetail';
 import PageHotPotatoForm from 'pages/discussion/PageHotPotatoForm';
+import PageLogin from 'pages/accounts/PageLogin';
+import PageProfile from 'pages/accounts/PageProfile';
 
 function App() {
   return (
@@ -32,8 +34,8 @@ function App() {
         <TopNav />
         <Routes>
           <Route path="/" element={<Navigate to="/reviews/" />} />
-          <Route path="/accounts/login/" element={<Login />} />
-          <Route path="/accounts/profile/" element={<Profile />} />
+          <Route path="/accounts/login/" element={<PageLogin />} />
+          <Route path="/accounts/profile/" element={<PageProfile />} />
 
           <Route path="/blog/posts/" element={<PageBlogList />} />
           <Route path="/blog/posts/new/" element={<PageBlogForm />} />
