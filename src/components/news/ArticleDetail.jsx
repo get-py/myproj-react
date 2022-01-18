@@ -1,13 +1,18 @@
 import { useApiAxios } from 'api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
+import useAuth from 'hooks/useAuth';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function ArticleDetail({ articleId }) {
+  const [auth] = useAuth();
   const navigate = useNavigate();
 
   const [{ data: article, loading, error }, refetch] = useApiAxios(
-    `/news/api/articles/${articleId}/`,
+    {
+      url: `/news/api/articles/${articleId}/`,
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
     { manual: true },
   );
   const [{ loading: deleteLoading, error: deleteError }, deleteArticle] =
@@ -15,6 +20,7 @@ function ArticleDetail({ articleId }) {
       {
         url: `/news/api/articles/${articleId}/`,
         method: 'DELETE',
+        headers: { Authorization: `Bearer ${auth.access}` },
       },
       { manual: true },
     );
@@ -41,6 +47,7 @@ function ArticleDetail({ articleId }) {
       {article && (
         <>
           <h3 className="text-2xl my-5">{article.title}</h3>
+          <p>by {article.author.username}</p>
           {article.photo && (
             <img className="rounded" src={article.photo} alt={article.title} />
           )}

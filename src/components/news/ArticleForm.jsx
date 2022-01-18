@@ -6,12 +6,19 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import produce from 'immer';
+import useAuth from 'hooks/useAuth';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
 function ArticleForm({ articleId, handleDidSave }) {
+  const [auth] = useAuth();
+
   const [{ data: article, loading: getLoading, error: getError }] = useApiAxios(
-    `/news/api/articles/${articleId}`,
+    {
+      url: `/news/api/articles/${articleId}`,
+      method: 'GET',
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
     { manual: !articleId },
   );
 
@@ -28,6 +35,7 @@ function ArticleForm({ articleId, handleDidSave }) {
         ? '/news/api/articles/'
         : `/news/api/articles/${articleId}/`,
       method: !articleId ? 'POST' : 'PUT',
+      headers: { Authorization: `Bearer ${auth.access}` },
     },
     { manual: true },
   );
@@ -73,7 +81,7 @@ function ArticleForm({ articleId, handleDidSave }) {
 
       {saveLoading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
       {saveError &&
-        `저장 중 에러가 발생했습니다. (${saveError.response.status} ${saveError.response.statusText})`}
+        `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
