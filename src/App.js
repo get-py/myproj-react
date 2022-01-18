@@ -1,11 +1,7 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import ReviewList from 'pages/reviews/PageReviewList';
-import Login from 'pages/accounts/PageLogin';
-import Profile from 'pages/accounts/PageProfile';
 import TopNav from 'components/TopNav';
 import Components from 'pages/examples/Components';
-import ReviewForm from 'pages/reviews/PageReviewForm';
 import PageBlogList from 'pages/blog/PageBlogList';
 import PageBlogDetail from 'pages/blog/PageBlogDetail';
 import PageBlogForm from 'pages/blog/PageBlogForm';

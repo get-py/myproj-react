@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const INITIAL_STATE = [{ id: 1, content: 'be more confident', score: 5 }];
+const INITIAL_FIELD_VALUES = { content: '', score: 5 };
 
 function PageReviewList() {
   const [reviewList, setReviewList] = useState(INITIAL_STATE);
@@ -13,10 +14,7 @@ function PageReviewList() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange, clearFieldValues, setFieldValues } =
-    useFieldValues({
-      content: '',
-      score: 5,
-    });
+    useFieldValues(INITIAL_FIELD_VALUES);
   const [isShowReviewForm, setIsShowReviewForm] = useState(false);
 
   // 무조건 이 형태(첫번째는 함수, 두번째는 배열)
@@ -106,7 +104,7 @@ function PageReviewList() {
       </button>
 
       <button
-        onClick={() => navigate('/reviews/new')}
+        onClick={() => navigate('/reviews/new/')}
         className="text-sm hover:bg-purple-200"
       >
         write
