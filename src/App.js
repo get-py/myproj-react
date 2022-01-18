@@ -1,11 +1,11 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import ReviewList from 'pages/reviews/ReviewList';
+import ReviewList from 'pages/reviews/PageReviewList';
 import Login from 'pages/accounts/PageLogin';
 import Profile from 'pages/accounts/PageProfile';
 import TopNav from 'components/TopNav';
 import Components from 'pages/examples/Components';
-import ReviewForm from 'pages/reviews/ReviewForm';
+import ReviewForm from 'pages/reviews/PageReviewForm';
 import PageBlogList from 'pages/blog/PageBlogList';
 import PageBlogDetail from 'pages/blog/PageBlogDetail';
 import PageBlogForm from 'pages/blog/PageBlogForm';
@@ -23,6 +23,8 @@ import PageHotPotatoDetail from 'pages/discussion/PageHotPotatoDetail';
 import PageHotPotatoForm from 'pages/discussion/PageHotPotatoForm';
 import PageLogin from 'pages/accounts/PageLogin';
 import PageProfile from 'pages/accounts/PageProfile';
+import PageReviewList from 'pages/reviews/PageReviewList';
+import PageReviewForm from 'pages/reviews/PageReviewForm';
 
 function App() {
   return (
@@ -74,9 +76,9 @@ function App() {
             element={<PageNewsArticleForm />}
           />
 
-          <Route path="/reviews/" element={<ReviewList />} />
-          <Route path="/reviews/new/" element={<ReviewForm />} />
-          <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
+          <Route path="/reviews/" element={<PageReviewList />} />
+          <Route path="/reviews/new/" element={<PageReviewForm />} />
+          <Route path="/reviews/:reviewId/edit/" element={<PageReviewForm />} />
         </Routes>
       </div>
     </>
