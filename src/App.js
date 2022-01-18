@@ -21,6 +21,7 @@ import PageLogin from 'pages/accounts/PageLogin';
 import PageProfile from 'pages/accounts/PageProfile';
 import PageReviewList from 'pages/reviews/PageReviewList';
 import PageReviewForm from 'pages/reviews/PageReviewForm';
+import SignupForm from 'components/accounts/SignupForm';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Navigate to="/reviews/" />} />
           <Route path="/accounts/login/" element={<PageLogin />} />
           <Route path="/accounts/profile/" element={<PageProfile />} />
+          <Route path="/accounts/signup/" element={<SignupForm />} />
 
           <Route path="/blog/posts/" element={<PageBlogList />} />
           <Route path="/blog/posts/new/" element={<PageBlogForm />} />
