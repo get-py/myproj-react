@@ -1,7 +1,9 @@
+const { default: LoginForm } = require('components/accounts/LoginForm');
+
 function PageLogin() {
   return (
     <div>
-      <h2>PageLogin</h2>
+      <LoginForm />
     </div>
   );
 }
