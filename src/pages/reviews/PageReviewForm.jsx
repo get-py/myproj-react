@@ -5,15 +5,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from 'api/base';
 
+const INITIAL_FIELD_VALUES = { score: 5, content: '' };
+
 function PageReviewForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { reviewId } = useParams();
   const { fieldValues, handleFieldChange, setFieldValues, clearFieldValues } =
-    useFieldValues({
-      score: 5,
-      content: '',
-    });
+    useFieldValues(INITIAL_FIELD_VALUES);
   const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState({});
 
