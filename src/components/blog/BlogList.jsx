@@ -2,10 +2,15 @@ import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import DebugStates from 'components/DebugStates';
 import BlogSummary from './BlogSummary';
+import useAuth from 'hooks/useAuth';
 
 function BlogList() {
-  const [{ data: postList, loading, error }, refetch] =
-    useApiAxios('blog/api/posts/');
+  const [auth] = useAuth();
+  const [{ data: postList, loading, error }, refetch] = useApiAxios({
+    url: 'blog/api/posts/',
+    method: 'GET',
+    headers: { Authorization: `Bearer ${auth.access}` },
+  });
 
   useEffect(() => {
     refetch();

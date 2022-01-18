@@ -1,13 +1,19 @@
 import { useApiAxios } from 'api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
+import useAuth from 'hooks/useAuth';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function BlogDetail({ postId }) {
+  const [auth] = useAuth();
   const navigate = useNavigate();
 
   const [{ data: post, loading, error }, refetch] = useApiAxios(
-    `/blog/api/posts/${postId}/`,
+    {
+      url: `/blog/api/posts/${postId}/`,
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
+    { manual: true },
   );
 
   const [{ loading: deleteLoading, error: deleteError }, deletePost] =
@@ -15,6 +21,7 @@ function BlogDetail({ postId }) {
       {
         url: `/blog/api/posts/${postId}/`,
         method: 'DELETE',
+        headers: { Authorization: `Bearer ${auth.access}` },
       },
       { manual: true },
     );
@@ -41,6 +48,7 @@ function BlogDetail({ postId }) {
       {post && (
         <>
           <h3 className="text-lg my-5">{post.title}</h3>
+          <p>by {post.author.username}</p>
           <div>
             {post.content.split(/[\r\n]/).map((line, index) => (
               <p className="my-3" key={index}>

@@ -5,12 +5,19 @@ import useFieldValues from 'hooks/useFieldValues';
 import LoadingIndicator from 'components/LoadingIndicator';
 import Button from 'components/Button';
 import DebugStates from 'components/DebugStates';
+import useAuth from 'hooks/useAuth';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
 function BlogForm({ postId, handleDidSave }) {
+  const [auth] = useAuth();
+
   const [{ data: post, loading: getLoading, error: getError }] = useApiAxios(
-    `/blog/api/posts/${postId}`,
+    {
+      url: `/blog/api/posts/${postId}`,
+      method: 'GET',
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
     { manual: !postId },
   );
 
@@ -25,6 +32,7 @@ function BlogForm({ postId, handleDidSave }) {
     {
       url: !postId ? '/blog/api/posts/' : `/blog/api/posts/${postId}/`,
       method: !postId ? 'POST' : 'PUT',
+      headers: { Authorization: `Bearer ${auth.access}` },
     },
     { manual: true },
   );
